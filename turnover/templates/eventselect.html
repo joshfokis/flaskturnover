@@ -1,0 +1,9 @@
+{# {% if eventviewlogs.count() > 0 %} #}
+    {{ title }}
+    {% for event in eventviewlogs %}
+        {% include 'events.html' %}
+    {% endfor %}
+{# {% elif eventviewlogs.count() = 0 %}
+    No items found
+{% endif %}
+ #}

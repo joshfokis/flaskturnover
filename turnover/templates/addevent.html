@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+    <h3>ADD EVENT</h3>
+    <form method="POST" action="">
+    {{ form.hidden_tag() }}
+    {{ form.client }}
+    {{ form.event }}
+    <input type="submit" value="Post!">
+    </form>
+{% endblock content %}
