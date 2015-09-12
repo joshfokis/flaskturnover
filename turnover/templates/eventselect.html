@@ -1,8 +1,26 @@
 {# {% if eventviewlogs.count() > 0 %} #}
-    {{ title }}
+{# {% extends "base.html" %}
+{% block content %} #}
+
+    <div class="panel panel-default">
+   <div class="panel-heading"><div id='viewtitle'><strong>{{ title }}</strong></div></div>
+   <div class="panel-body">
+    <table id="eventtable" border="1" style="width:100%" class="table-bordered table-hover">
+    <tr>
+        <th class="col-sm-2">Timestamp</th>
+        <th class="col-sm-1">User</th>
+        <th class="col-sm-8">Event</th>
+    </tr>
     {% for event in eventviewlogs %}
+    <tr>
         {% include 'events.html' %}
+    </tr>
     {% endfor %}
+    </table>
+</div>
+</div>
+{# {% endblock content %} #}
+
 {# {% elif eventviewlogs.count() = 0 %}
     No items found
 {% endif %}

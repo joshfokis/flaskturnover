@@ -1,0 +1,55 @@
+{% if current_user.role_id != 3 %}
+   <div id='viewtitle' class="hidden"><h4>{{ title }}</h4></div>
+<div class="panel panel-default">
+   <div class="panel-heading"><strong>Client 1</strong></div>
+   <div class="panel-body collapse-show">
+<table id="client1archive" border="1" style="width:100%" class="table-bordered table-hover">
+    <tr>
+        <th class="col-sm-2">Timestamp</th>
+        <th class="col-sm-1">User</th>
+        <th class="col-sm-8">Event</th>
+    </tr>
+{% for event in events %}
+    <tr>
+    {% include 'events.html' %}
+    </tr>
+{% endfor %}
+</table>
+</div>
+</div>
+
+<div class="panel panel-default">
+   <div id="panelc1" class="panel-heading"><strong>Client 2</strong></div>
+   <div class="panel-body collapse-show">
+<table id="client2archive" border="1" style="width:100%" class="table-bordered table-hover">
+    <tr>
+        <th class="col-sm-2">Timestamp</th>
+        <th class="col-sm-1">User</th>
+        <th class="col-sm-8">Event</th>
+    </tr>
+{% for event in events2 %}
+    <tr>
+    {% include 'events.html' %}
+    </tr>
+{% endfor %}
+</table>
+</div>
+</div>
+{% endif %}
+<div class="panel panel-default">
+   <div class="panel-heading"><strong>Client 3</strong></div>
+   <div class="panel-body collapse-show">
+<table id="client3archive" border="1" style="width:100%" class="table-bordered table-hover">
+    <tr>
+        <th class="col-sm-2">Timestamp</th>
+        <th class="col-sm-1">User</th>
+        <th class="col-sm-8">Event</th>
+    </tr>
+    {% for event in events3 %}
+    <tr>
+    {% include 'events.html' %}
+    </tr>
+{% endfor %}
+</table>
+</div>
+</div>

@@ -1,0 +1,25 @@
+
+{% block content %}
+<a href="#" class="export">Export to CSV</a>
+<div class="panel panel-default">
+   <div class="panel-heading"><strong>Search Results</strong></div>
+   <div class="panel-body">
+   <div id="dvData">
+<table id="eventtable" border="1" style="width:100%" class="table-bordered table-hover">
+        <th class="col-sm-2">Timestamp</th>
+        <th class="col-sm-1">User</th>
+        <th class="col-sm-8">Event</th>
+        {% for event in results %}
+    <tr>
+    {% include "events.html" %}
+    </tr>
+{% endfor %}
+</table>
+</div>
+</div>
+</div>
+{% if results.has_prev %}<a href="{{ url_for('search', page=results.prev_num) }}">&lt;&lt; Newer Events</a>
+{% endif %}
+{% if results.has_next %}<a href="{{ url_for('search', page=results.next_num) }}">Older Events &gt;&gt;</a>
+{% endif %}
+{% endblock content %}

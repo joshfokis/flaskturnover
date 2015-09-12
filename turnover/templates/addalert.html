@@ -1,0 +1,25 @@
+
+
+{# <div class="title"><h3>Add Alert</h3></div> #}
+{# <div class="addalert col-sm-4"> #}
+<table id="addalert-table">
+
+<form method="POST">
+    {{ alertform.hidden_tag() }}
+    <tr><td>{{ alertform.alert_title.label}}</td><td>{{ alertform.alert_title }}</td></tr>
+
+    <tr><td>{{ alertform.alert_client.label}}</td><td>{{ alertform.alert_client }}</td></tr>
+
+    <tr><td>{{ alertform.alert_details.label}}</td><td>{{ alertform.alert_details(cols=22, rows=5) }}</td></tr>
+
+    <tr><td>{{ alertform.alert_startdate.label}}</td><td>{{ alertform.alert_startdate }}</td></tr>
+
+    <tr><td>{{ alertform.alert_enddate.label}}</td><td>{{ alertform.alert_enddate }}</td></tr>
+
+    <tr><td>{{ alertform.alert_cleared.label}}</td><td>{{ alertform.alert_cleared }}</td></tr>
+
+    <tr><td></td><td><input class="submit-btn btn btn-danger" type="submit" value="Add Alert" /></td></tr>
+</form>
+</table>
+{# </div> #}
+

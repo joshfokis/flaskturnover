@@ -1,2 +1,3 @@
-from turnover import app
-app.run(debug=True, host="0.0.0.0")
+from turnover import socketio, app
+
+socketio.run(app, host="0.0.0.0")

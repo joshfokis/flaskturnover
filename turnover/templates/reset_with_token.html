@@ -1,0 +1,30 @@
+<div class="login-page" style="background: #0085C3">
+<link href="{{ url_for('static', filename='css/bootstrap.min.css' ) }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/main.css' ) }}" rel="stylesheet">
+ <script src="{{ url_for('static', filename='js/jquery-1.11.3.min.js')}}"></script>
+     <script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
+<div class="container">
+    <div class="login-box col-sm-6">
+    <table style="width:100%">
+    <tr>
+    <td>
+    <img src="{{ url_for('static', filename='img/yl.png' ) }}" width="200" height="200">
+    </td>
+            <form action="{{ url_for('reset_with_token', token=token) }}" method="POST">
+                {{ form.hidden_tag() }}
+                <td><div class="pull-right">{{ form.password.label }}: {{ form.password }}</div>
+                <div class="pull-right">{{ form. confirm.label }}: {{ form.confirm}}</div>
+                <input class="login-btn btn btn-danger pull-right" type="submit" style="width: 55%;" value="Submit" />
+                </div>
+                </td></tr>
+            </form>
+    </table>
+
+    </div>
+</div> <!-- /container -->
+</div>
+<footer>
+        <div id="footer" class="container">
+            <p>&copy; Your Company {{ now }}</p>
+        </div>
+    </footer>

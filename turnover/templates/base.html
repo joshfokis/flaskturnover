@@ -5,14 +5,147 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Turnover</title>
     <link href="{{ url_for('static', filename='css/bootstrap.min.css' ) }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/bootstrap-datepicker3.min.css' ) }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/main.css' ) }}" rel="stylesheet">
     <script src="{{ url_for('static', filename='js/jquery-1.11.3.min.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/socket.io.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
     <script src="{{ url_for('static', filename='js/main.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/export.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap-datepicker.min.js')}}"></script>
 </head>
-<body><div class="container">
-        <h1>Hello {{ current_user.username }}</h1>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    {# <a class="navbar-brand" href="{{ url_for('home') }}">Turnover</a> #}
+                    <a class="navbar-brand" href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='img/ylwhite.png' ) }}" width="75" height="30"></a>
+                </div>
+            <div>
+                <ul class="nav navbar-nav">
+                    <li><a href="#" data-toggle="modal" data-target="#addevent">ADD EVENT</a></li>
+                    <li><a href="{{ url_for('search') }}" class="navsearch">Search</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#addalert">Add Alert</a></li>
+                    <li></li>
+                </ul>
+                <div class="titlebar col-sm-2"><p class="navbar-center navbar-text">Turnover</p></div>
+                <p class="navbar-text navbar-right">Logged in as: {{ current_user }}   <a href="{{ url_for('logout') }}" class="navbar-link">(Logout)</a></p>
+            </div>
+            </div>
+        </nav>
+<br><br><br><br>
+<div class="container-fluid" id="datecont">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <div id="dateside"></div>
+                </ul>
+            </div>
+        </div>
+</div>
+<div class="container">
+{% if current_user.role_id != 3 %}
+    <div class="adderror">{% if adderror %}
+        {{ adderror }}
+    {% endif %}</div>
+    {% if alerts %}
+    {% if alerts.count() != 0 %}
+    <div class="alerts-row col-sm-6">
+    <div id="alerts" class="well well-sm">
+            <div id="alertscount"><strong><h3>({{ alerts.count() }}) Alert! </h3></strong></div>
+
+    {% for alert in alerts  %}
+        <div class="alertstitle hidden"><strong>{{ alert.title}}</strong> <i>{{ alert.client }}</i></div><div class="alertsbody hidden">
+        <div class="alertsdates"><strong>Start:</strong> {{ alert.startdate }}
+         <strong>End:</strong> {{ alert.enddate }}</div>
+        <div class="alertsdetail">{{ alert.details }}</div>
+    </div>
+    {% endfor %}
+    </div>
+    </div>
+    {% endif %}
+    {% endif %}
+{% else %}
+    {% if alerts %}
+    {% if count != 0 %}
+     <div class="alerts-row col-sm-6">
+        <div id="alerts" class="well well-md">
+        <div id="alertscount"><strong><h3>({{ count }}) Alert! </h3></strong></div>
+        {% for alert in alerts  %}
+            {% if alert.cleared != True %}
+        <div class="alertstitle hidden"><strong>{{ alert.title}}</strong></div><div class="alertsbody hidden"><div class="alertsdates">Start: {{ alert.startdate }} == End: {{ alert.enddate }}</div>
+        <div class="alertsdetail">{{ alert.details }}
+        <i>{{ alert.client }}</i></div>
+        </div>
+            {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+{% endif %}
+{% endif %}
+{% if current_user.role_id != 3 %}
+    <div class="view-form">
+    {% if viewform %}
+                    <form>
+    {#                     <div class="form-group"> #}
+                            <strong>Select view: </strong>{{ viewform.client() }}
+    {#                     </div> #}
+                    </form>
+                {% endif %}
+    </div>
+{% endif %}
+    <p></p>
     {% block content %}
 
     {% endblock content %}</div>
+
+
+    <div id="addalert" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Alert</h4>
+      </div>
+      <div class="modal-body">
+            {% include "addalert.html" %}
+      </div>
+      <div class="modal-footer"><p></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div id="addevent" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Event</h4>
+      </div>
+      <div class="modal-body">
+            {% include "addevent.html" %}
+      </div>
+        <div class="modal-footer"><p></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <footer>
+        <div id="footer" class="container">
+            <p>&copy; Your Company {{ now }}</p>
+        </div>
+    </footer>
+    <br>
+    <br>
 </body>
 </html>

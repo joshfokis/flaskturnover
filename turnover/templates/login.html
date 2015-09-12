@@ -1,11 +1,52 @@
-{% extends "base.html" %}
-{% block content %}
-<form method="POST">
-{{ form.hidden_tag() }}
-{{ error }}
-{{ form.username }}
-{{ form.password }}
-{{ form.remember_me }}
-{{ form.submit }}
-</form>
-{% endblock content %}
+<head>
+    <title>Turnover Login</title>
+</head>
+<div class="login-page" style="background: #0085C3">
+<link href="{{ url_for('static', filename='css/bootstrap.min.css' ) }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/main.css' ) }}" rel="stylesheet">
+ <script src="{{ url_for('static', filename='js/jquery-1.11.3.min.js')}}"></script>
+     <script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
+<div class="container">
+    <div class="login-box col-sm-6">
+        <table style="width:100%">
+        <tr>
+        <td>
+        <img src="{{ url_for('static', filename='img/yl.png' ) }}" width="200" height="200">
+        </td>
+        <td>
+                {% if form.errors %}
+                    <ul class='errors pull-right'>
+                {% for error in form.errors %}
+                    <li>{{ error }}: This field is required</li>
+                {% endfor %}
+                    </ul>
+                {% endif %}
+                {% if error %}
+                <ul class='errors pull-right'>
+                    <li>{{ error }}</li>
+                </ul>
+                {% else %}
+                    <br>
+                {% endif %}
+
+                <form method="POST">
+                      {{ form.hidden_tag() }}
+                    <div class="pull-right">{{ form.username.label }}: {{ form.username }}</div>
+                    <div class="pull-right">{{ form.password.label }}: {{ form.password }}</div>
+                    <div class="pull-right"><p>{{ form.remember_me.label }} {{ form.remember_me }}</p>
+                   <input class="login-btn btn btn-danger" type="submit" value="Login" />
+                    <br>
+                    <p><a href="{{ url_for('reset') }}">Forgot Password</a></p>
+                    </div>
+                    </td></tr>
+                </form>
+        </table>
+
+    </div>
+</div> <!-- /container -->
+</div>
+<footer>
+        <div id="footer" class="container">
+            <p>&copy; Your Company {{ now }}</p>
+        </div>
+    </footer>

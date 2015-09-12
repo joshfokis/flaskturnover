@@ -5,6 +5,8 @@ from flask.ext.login import LoginManager
 from flask.ext.mail import Mail
 from flask.ext.moment import Moment
 from flask_wtf.csrf import CsrfProtect
+from flask.ext.socketio import SocketIO
+from flask_admin import Admin
 
 
 app = Flask(__name__)
@@ -15,6 +17,10 @@ lm.init_app(app)
 lm.login_view = 'login'
 moment = Moment(app)
 CsrfProtect(app)
+socketio = SocketIO(app)
+mail = Mail(app)
+admin = Admin(app, name='Turnover', template_mode='bootstrap3')
+
 
 # if not app.debug:
 #     import logging

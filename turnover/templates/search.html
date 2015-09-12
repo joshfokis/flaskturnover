@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="search_title"><h4><strong>Search</strong></h4></div>
+<div id="searchbox" style="width: 100%">
+    <form method="POST">
+        {{ form.hidden_tag() }}
+         {{ form.search_box.label }}  {{ form.search_box }}
+        {% if current_user.role_id != 3 %}
+            {{ form.client.label }}  {{ form.client }}
+        {% else %}
+            <div class="hidden">{{ form.client.label }}  {{ form.client }}</div>
+        {% endif %}
+
+         {{ form.on_day.label }}  {{ form.on_day }}
+         {{ form.start_date.label }}  {{ form.start_date }}
+         {{ form.end_date.label }}  {{ form.end_date }}
+        <input type="submit" class="pull-right" />
+    </form>
+</div>
+<br>
+{% if results %}
+<div id="dvData">
+{% include "results.html" %}
+</div>
+{% endif %}
+{% endblock content %}

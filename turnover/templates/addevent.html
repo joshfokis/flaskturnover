@@ -1,10 +1,15 @@
-{% extends "base.html" %}
-{% block content %}
-    <h3>ADD EVENT</h3>
+<table class="addevent">
     <form method="POST" action="">
-    {{ form.hidden_tag() }}
-    {{ form.client }}
-    {{ form.event }}
-    <input type="submit" value="Post!">
+    {{ addeventform.hidden_tag() }}
+    {% if current_user.role_id != 3 %}
+         <tr><td>{{ addeventform.clientlist.label }}: {{ addeventform.clientlist }}</td></tr>
+    {% else %}
+        <div class="hidden">{{ addeventform.clientlist.label }}</div>
+        <div class="hidden">{{ addeventform.clientlist }}</div>
+    {% endif %}
+    <tr><td>{{ addeventform.event.label }}</td></tr>
+    <tr><td>{{ addeventform.event(cols=35, rows=5) }}</td></tr>
+    <tr><td><input class="addeventbtn btn btn-danger" type="submit" value="Add Event"></td></tr>
     </form>
-{% endblock content %}
+    </table>
+

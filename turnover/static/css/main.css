@@ -1,0 +1,280 @@
+#alerts {
+    /*width: 15%;
+     position:fixed;
+     top:150;
+     right:0;*/
+    text-align: center;
+    cursor: pointer;
+}
+
+.well {
+    background: #DC5034;
+}
+
+.errors li {
+    color: red;
+}
+
+#alertscount {
+    color:white;
+}
+
+.adderror {
+    text-align: center;
+    color: red;
+
+}
+
+.datepicker .today .day {
+    background: #7AB800;
+}
+
+.alertstitle {
+    color: white;
+    border: 1px solid #0085C3;
+    background: #0085C3;
+}
+.alertsbody {
+    border: 1px solid white;
+    background: white;
+}
+
+.alertsdates {
+    border: 1px solid #eee;
+    background: #eee;
+}
+
+.alerts-row {
+    text-align: center;
+/*    padding: 5px;*/
+    float: none;
+    margin: 0 auto;
+}
+
+
+#datecont{
+     position:fixed;
+     top:150;
+     left:0;
+}
+
+#footer{
+ position:fixed;
+ bottom:0;
+ left:0;
+}
+
+/*table tr:nth-child(even) {
+    background-color: #eee;
+}*/
+
+#addalert-table td {
+    padding: 5px;
+}
+
+ #eventtable th {
+    text-align: center;
+}
+
+ #eventtable td {
+    padding: 5px;
+}
+
+ #eventtable tr:nth-child(odd) {
+   background-color:#EEEEEE;
+}
+
+ #client1table th {
+    text-align: center;
+}
+
+ #client1table td {
+    padding: 5px;
+}
+
+ #client1table tr:nth-child(odd) {
+   background-color:#EEEEEE;
+}
+ #client2table th {
+    text-align: center;
+}
+
+ #client2table td {
+    padding: 5px;
+}
+
+ #client2table tr:nth-child(odd) {
+   background-color:#EEEEEE;
+}
+ #client3table th {
+    text-align: center;
+}
+
+ #client3table td {
+    padding: 5px;
+}
+
+ #client3table tr:nth-child(odd) {
+   background-color:#EEEEEE;
+}
+
+ #client1archive th {
+    text-align: center;
+}
+
+ #client1archive td {
+    padding: 5px;
+}
+
+ #client1archive tr:nth-child(odd) {
+   background-color:#EEEEEE;
+}
+ #client2archive th {
+    text-align: center;
+}
+
+ #client2archive td {
+    padding: 5px;
+}
+
+ #client2archive tr:nth-child(odd) {
+   background-color:#EEEEEE;
+}
+ #client3archive th {
+    text-align: center;
+}
+
+ #client3archive td {
+    padding: 5px;
+}
+
+ #client3archive tr:nth-child(odd) {
+   background-color:#EEEEEE;
+}
+.navbar {
+    background: #0085C3;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: white;
+}
+
+/*.navbar-header .navbar-brand {
+    margin-top: -10px;
+}
+*/
+.navbar-default .navbar-text .navbar-link{
+    color:white;
+    margin-right: 20px;
+}
+
+.navbar-default .navbar-text {
+    color:white;
+}
+
+.titlebar {
+    text-indent: 50px;
+    font-size:20px;
+    color:white;
+    text-align: center;
+    float: none;
+    margin: 0 auto;
+}
+
+.addevent {
+    text-align: center;
+    float: none;
+    margin: 0 auto;
+}
+
+
+.addeventbtn {
+   width: 100%;
+}
+
+.title {
+    text-align: center;
+}
+
+.addalert {
+    float: none;
+    margin: 0 auto;
+}
+
+.submit-btn {
+   width: 100%;
+}
+
+.modal-header {
+    color: white;
+    background: #009BBB;
+    text-align: center;
+}
+
+.modal-footer {
+    color: white;
+    background: #009BBB;
+    text-align: center;
+}
+
+#searchbox {
+    padding: 5px;
+    border: 1px solid #0085C3;
+    box-sizing: border-box;
+    float: none;
+    margin: 0 auto;
+}
+
+.login-page {
+    float: none;
+    margin: 0 auto;
+    height:100%;
+}
+
+/*.login-window {
+    border: 1px solid #0085C3;
+}*/
+
+.login-box {
+    background:white;
+    padding: 5px;
+    border: 1px solid #0085C3;
+    box-sizing: border-box;
+    float: none;
+    margin: 0 auto;
+    margin-top:20%;
+}
+
+.login-btn {
+    width: 100%;
+    /*margin-left: 75px;*/
+}
+
+
+.title-bar {
+    text-align: center;
+}
+
+.view-form {
+    text-align: center;
+    padding: 5px;
+    float: none;
+    margin: 0 auto;
+}
+
+
+
+.search_title {
+    text-align: center;
+}
+
+#viewtitle {
+    text-align: center;
+}
+
+.panel .panel-heading {
+    background: #0085C3;
+    text-align: center;
+    color: white;
+}
+

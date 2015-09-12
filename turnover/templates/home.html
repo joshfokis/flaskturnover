@@ -1,13 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
-<form>
-{{ viewform.client() }}
-</form>
-<a href="{{ url_for('addevent') }}">ADD EVENT</a>
-<div id="eventslog">{% include "eventselect.html" %}</div>
-<div id="homeevents">
-{% for event in events %}
-    {% include 'events.html' %}
-{% endfor %}</div>
+<input type="hidden" name="homedate" id="homedate">
+<div id="eventslog" class="hidden">{% include "eventselect.html" %}</div>
+<div id="homeevents1" class="none">{% include "summary.html" %}</div>
+<div id="archiveevents" class="hidden">{% include "summary.html" %}</div>
+
+
+
+
 {% endblock content %}
 
