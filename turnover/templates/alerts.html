@@ -1,0 +1,36 @@
+{% if alerts %}
+    <div class="alerts-row col-sm-12">
+    {% for alert in alerts  %}
+    {% if alert.priority == 'High' %}
+        {% if alert.cleared == True %}
+            {% if current_user.role_id != 4 %}
+                <div class="highalert"><div class="col-sm-3"><strong>Title: </strong>{{ alert.title}} {% if alert.client != "All" and "all" and "" %} <strong>Client: </strong> <i>{{ alert.client }}</i>{% endif %}</div>
+                <div class="col-sm-5 alertdetails"><strong>Details: </strong> {{ alert.details }}</div>
+                <strong>Start Date:</strong> {{ alert.startdate }}<strong> End Date:</strong> {{ alert.enddate }}</div><div class="alertsbody hidden"><div class="alertsdates">{{ alert.details }}</div></div>
+            {% endif %}
+        {% else %}
+        <div class="highalert"><div class="col-sm-3"><strong>Title: </strong>{{ alert.title}} {% if alert.client != "All" and "all" and "" %} <strong>Client: </strong> <i>{{ alert.client }}</i>{% endif %}</div>
+        <div class="col-sm-5 alertdetails"><strong>Details: </strong> {{ alert.details }}</div>
+        <strong>Start Date:</strong> {{ alert.startdate }}<strong> End Date:</strong> {{ alert.enddate }}</div><div class="alertsbody hidden"><div class="alertsdates">{{ alert.details }}</div></div>
+        {% endif %}
+    {% endif %}
+    {% endfor %}
+    {% for alert in alerts  %}
+    {% if alert.priority != 'High' %}
+        {% if alert.cleared == True %}
+            {% if current_user.role_id != 4 %}
+                <div class="alertstitle"><div class="col-sm-3"><strong>Title: </strong>{{ alert.title}}{% if alert.client != "All" and "all" and "" %} <strong>Client: </strong> <i>{{ alert.client }}</i>{% endif %}</div>
+                <div class="col-sm-5 alertdetails"><strong>Details: </strong> {{ alert.details }}</div>
+                <strong>Start Date:</strong> {{ alert.startdate }}<strong> End Date:</strong> {{ alert.enddate }}</div><div class="alertsbody hidden"><div class="alertsdates">{{ alert.details }}</div></div>
+            {% endif %}
+        {% else %}
+        <div class="alertstitle"><div class="col-sm-3"><strong>Title: </strong>{{ alert.title}}{% if alert.client != "All" and "all" and "" %} <strong>Client: </strong> <i>{{ alert.client }}</i> {% endif %}</div>
+        <div class="col-sm-5 alertdetails"><strong>Details: </strong> {{ alert.details }}</div>
+        <strong>Start Date:</strong> {{ alert.startdate }}<strong> End Date:</strong> {{ alert.enddate }}</div><div class="alertsbody hidden"><div class="alertsdates">{{ alert.details }}</div></div>
+        {% endif %}
+    {% endif %}
+    {% endfor %}
+    </div>
+</br>
+{% endif %}
+
