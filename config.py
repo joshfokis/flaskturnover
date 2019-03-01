@@ -1,26 +1,37 @@
 import os
+"""
+Sets the base direcotry path for the Web Application.
+"""
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-SQLALCHEMY_DATABASE_URI = 'mysql://host:password@localhost/users'
-SQLALCHEMY_BINDS = {
-    'roles': 'mysql://host:password@localhost/roles',
-    'alerts': 'mysql://host:password@localhost/alerts',
-    'client1': 'mysql://host:password@localhost/client1',
-    'client2': 'mysql://host:password@localhost/client2',
-    'client3': 'mysql://host:password@localhost/client3'
-}
+"""
+Set the SQL Database connections using the Flask SQLAlchemy URI. For more info visit http://flask-sqlalchemy.pocoo.org/2.1/config/
+"""
+SQLALCHEMY_DATABASE_URI = 'postgres://admin:password@databaseserver/flaskturnover'
+
+
+"""
+This will Set the allowed hosts to access the application, set debug, and WTForms CSRF.
+"""
 
 HOST = "0.0.0.0"
 DEBUG = True
 WTF_CSRF_ENABLED = True
+
+"""
+Secret Key for hashing. TODO better implementation/ hiding the Key.
+"""
 SECRET_KEY = 'secret'
 
-MAIL_SERVER = 'smtp.mailserver.com'
+"""
+Configure the Mail server to send Password Recover Emails.
+"""
+MAIL_SERVER = 'smtp.email.com'
 MAIL_PORT = 465
 MAIL_USE_TLS = False
 MAIL_USE_SSL = True
-MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
-MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+MAIL_USERNAME = 'user@email.com'
+MAIL_PASSWORD = 'password'
 
 # administrator list
-ADMINS = ['admin@example.com']
+ADMINS = ['user@email.com']
