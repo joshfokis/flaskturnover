@@ -1,5 +1,5 @@
 from itsdangerous import URLSafeTimedSerializer
-from flask.ext.mail import Message
+from flask_mail import Message
 from turnover import app, mail
 from config import ADMINS
 
@@ -7,6 +7,9 @@ ts = URLSafeTimedSerializer(app.config["SECRET_KEY"])
 
 
 def send_email(subject, sender, recipients, text_body, html_body):
+    """
+    This sets the configuration for the emails to be sent for a password reset
+    """
     if sender == None:
         sender= ADMINS[0]
     msg = Message(subject, sender=sender, recipients=recipients)
