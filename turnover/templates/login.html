@@ -1,7 +1,7 @@
 <head>
     <title>Turnover Login</title>
 </head>
-<div class="login-page" style="background: #0085C3">
+<div class="login-page" style="background: #6485c1">
 <link href="{{ url_for('static', filename='css/bootstrap.min.css' ) }}" rel="stylesheet">
 <link href="{{ url_for('static', filename='css/main.css' ) }}" rel="stylesheet">
  <script src="{{ url_for('static', filename='js/jquery-1.11.3.min.js')}}"></script>
@@ -11,7 +11,7 @@
         <table style="width:100%">
         <tr>
         <td>
-        <img src="{{ url_for('static', filename='img/yl.png' ) }}" width="200" height="200">
+        <img src="{{ url_for('static', filename='img/logo.svg' ) }}" width="200" height="200">
         </td>
         <td>
                 {% if form.errors %}
@@ -47,6 +47,6 @@
 </div>
 <footer>
         <div id="footer" class="container">
-            <p>&copy; Your Company {{ now }}</p>
+            <p>&copy; Josh Flinner {{ now }}</p>
         </div>
     </footer>
