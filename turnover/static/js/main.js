@@ -50,49 +50,24 @@ $(function () {
     var DB_INSERT_EVENT = 'db.inserted';
     socket.on(DB_INSERT_EVENT, function(data) {
         // $('#test').append(data.posted + ' | ' + data.poster + ' | ' + data.event);
-        // console.log(data.client, data.event, data.posted, data.poster);
-        if ($('#viewtitle').text() === 'EventsClient1') {
-            if(data.client === 'client1'){
-                $('#eventtable').append('<tr><td style="text-align: center;"><strong>' + data.posted + '</strong></td><td style="text-align: center;><strong>' + data.poster + ' </strong></td><td><strong> ' + data.event + '</strong></td></tr>');
-                console.log(data.client, data.event, data.posted, data.poster);
-                console.log($('#viewtitle').text());
-            } else {
-                console.log('not client1');
-            }
-
+        console.log(data.client, data.event, data.posted, data.poster);
+        if ($('#viewtitleid').text() === data.client.toString()) {
+            var tablerowstring1 = '<tr><td style="text-align: center;"><strong>' + data.posted 
+            var tablerowstring2 = '</strong></td><td style="text-align: center;"><strong>' + data.poster
+            var tablerowstring3 = '</strong></td><td><strong>' + data.event + '</strong></td></tr>'
+            $('#eventtable').append((tablerowstring1 + tablerowstring2 + tablerowstring3));
+            console.log('client insert');
+            console.log(tablerowstring1 + tablerowstring2 + tablerowstring3)
         } else{
-            console.log($('#viewtitle').text());
+            console.log($('#viewtitleid').text());
+            console.log(typeof data.client.toString())
+            console.log(typeof $('#viewtitleid').text())
+            console.log(($('#viewtitleid').text() === data.client.toString()))
         }
-    if ($('#viewtitle').text() === 'EventsClient2') {
-            if(data.client === 'client2'){
-                $('#eventtable').append('<tr><td style="text-align: center;"><strong>' + data.posted + '</strong></td><td style="text-align: center;><strong>' + data.poster + ' </strong></td><td><strong> ' + data.event + '</strong></td></tr>');
-                console.log(data.client, data.event, data.posted, data.poster);
-                console.log($('#viewtitle').text());
-            } else {
-                console.log('not client2');
-            }
-
-        } else{
-            console.log($('#viewtitle').text());
-        }
-    if ($('#viewtitle').text() === 'EventsClient3') {
-            if(data.client === 'client3'){
-                $('#eventtable').append('<tr><td style="text-align: center;"><strong>' + data.posted + '</strong></td><td style="text-align: center;><strong>' + data.poster + ' </strong></td><td><strong> ' + data.event + '</strong></td></tr>');
-                console.log(data.client, data.event, data.posted, data.poster);
-                console.log($('#viewtitle').text());
-            } else {console.log('not client3');}
-        }else{
-            console.log($('#viewtitle').text());
-        }
-     if ($('#viewtitle').text() === 'Summary') {
-            if(data.client === 'client1'){
-                $('#client1table').append('<tr><td style="text-align: center;"><strong>' + data.posted + '</strong></td><td style="text-align: center;"><strong>' + data.poster + ' </strong></td><td><strong> ' + data.event + '</strong></td></tr>');
-            } else  if(data.client === 'client2') {
-                $('#client2table').append('<tr><td style="text-align: center;"><strong>' + data.posted + '</strong></td><td style="text-align: center;"><strong>' + data.poster + ' </strong></td><td><strong> ' + data.event + '</strong></td></tr>');
-            } else if(data.client === 'client3'){
-                $('#client3table').append('<tr><td style="text-align: center;"><strong>' + data.posted + '</strong></td><td style="text-align: center;"><strong>' + data.poster + ' </strong></td><td><strong> ' + data.event + '</strong></td></tr>');
-            } else {  console.log('not client3'); }
-        } else{ console.log($('#viewtitle').text());}
+        if ($('#viewtitle').text() === 'Summary') {
+            console.log('summary insert')
+            $('#'+ data.client.toString() + 'table').append('<tr><td style="text-align: center;"><strong>' + data.posted + '</strong></td><td style="text-align: center;"><strong>' + data.poster + ' </strong></td><td><strong> ' + data.event + '</strong></td></tr>');
+        } else{$('#viewtitle').text();}
     });
 });
 
@@ -105,6 +80,12 @@ $(function() {
 
 $(function() {
     $(".alertstitle").click(function(){
+        $(this).next().toggleClass('hidden');
+    });
+});
+
+$(function() {
+    $(".highalert").click(function(){
         $(this).next().toggleClass('hidden');
     });
 });
@@ -139,14 +120,19 @@ function eventSuccess(data, textStatus, jqXHR)
     }
 
 $(function() {
-    if(window.location.pathname === '/search/'){
-        $("#datecont").addClass('hidden');
+    if(window.location.pathname !== '/'){
+	$(".datesarchive").addClass('hidden');
+	$("#spacercol").removeClass('col-sm-1').addClass('col-sm-2');
+	$(".titlebar").css('text-indent','0px');
     }
 });
 
 $(function() {
     $(".addeventbtn").click(function() {
-        if($('#clientlist').val() === '') {
+
+        if($('#clientlist').parent().hasClass("hidden")) {
+            $('#clientlist').val('Commercial');
+        }else if($('#clientlist').val() === '') {
             alert("You must select a client.");
         }
     });
@@ -179,3 +165,22 @@ $(function() {
         'autoclose': true,
     });
 });
+
+$(function() {
+    $('#myDropdown .dropdown-menu').on({
+    "click":function(e){
+      e.stopPropagation();
+    }
+    });
+});
+
+$(document).ready(function(){
+    $('select').formSelect();
+});
+
+$(document).ready(function(){
+    $('.collapsible').collapsible();
+});
+$(document).ready(function(){
+    $('.modal').modal();
+  });
